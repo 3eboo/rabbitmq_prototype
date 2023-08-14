@@ -26,7 +26,7 @@ This application demonstrates how to use RabbitMQ to process edit events and per
 1. **For the sake of prototype the data is stored as an array of documents in file called "results.json" to get the data, use docker cp command and get the file from consumer's container like this:**
 
 ```commandline
-docker cp europace_task_consumer_1:/app/results.json .
+docker cp rabbitmq_prototype_consumer:/app/results.json .
 ```   
 
 2. **A flag is published by producer (b'END') to notify the end of messages and therefore dumping the results**
