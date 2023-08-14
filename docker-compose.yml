@@ -1,0 +1,22 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: myrabbit
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+      - "15692:15692"
+    environment:
+      - RABBITMQ_DEFAULT_VHOST=my_vhost
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=pass
+      - hostname=my_rabbit
+  producer:
+    build: ./producer # Build context for producer Dockerfile
+    depends_on:
+      - rabbitmq
+  consumer:
+    build: ./consumer # Build context for consumer Dockerfile
+    depends_on:
+      - rabbitmq
