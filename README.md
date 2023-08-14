@@ -1,25 +1,23 @@
-##RabbitMQ Data Processing Application Prototype
+## RabbitMQ Data Processing Application Prototype
 
 This application demonstrates how to use RabbitMQ to process edit events and perform aggregations on them.
 
 ### Setup
 
-1. **Install Docker and Docker Compose**:
-   Ensure you have Docker and Docker Compose installed on your system.
+1. **Ensure you have Docker and Docker Compose installed on your system.**  
 
-2. **Clone the Repository**:
-   Clone this repository to your local machine.
+2. **Clone this repository to your local machine.**
 
 
 ### Running the Application
 
-1. **Start RabbitMQ and Services**:
-   Open a terminal and navigate to the project directory.
+1. **Open a terminal and navigate to the project directory, then run:.**
 
    ```bash
    docker-compose up
    ```
    
+you will see the three containers running, rabbitmq instance, producer and consumer. The results will be calculated and logged. By the end data will be fetched to ``results.json`` in consumer container.
 
 ### Assumptions 
 
@@ -60,5 +58,5 @@ Doesn't conform with typical SQL database properties(ACID).
 3.Suitable for simple routing based on exact routing keys.  
 **Cons:**  
 1.Limited routing flexibility compared to other exchange types.  
-2.Might not be optimal if you need more advanced routing patterns.
+2.Might not be optimal if you need more advanced routing patterns.  
 3.Scalability and fault tolerance wise direct exchange may be not the strongest, if queue goes down messages can be lost and additional mechanism shall be implemented to avoid that. 
