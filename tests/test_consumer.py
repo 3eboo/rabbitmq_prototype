@@ -1,6 +1,4 @@
 from unittest.mock import Mock, patch
-from consumer.consumer import EditCounter, callback
-from unittest.mock import Mock, patch
 
 from consumer.consumer import EditCounter, callback
 
@@ -26,4 +24,3 @@ def test_callback():
         callback(mock_ch, mock_method, mock_properties, mock_body)
 
     assert counter.global_edits == 1
-

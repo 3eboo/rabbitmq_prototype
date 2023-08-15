@@ -2,7 +2,6 @@ from unittest.mock import patch
 
 import pika
 import pytest
-
 from producer.producer import produce_message
 
 
@@ -27,5 +26,3 @@ def test_produce_message_with_connection_error(mock_pika):
 
     with pytest.raises(RuntimeError, match="Error connecting to RabbitMQ: "):
         produce_message('sample_data.csv')
-
-
