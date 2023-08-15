@@ -53,13 +53,13 @@ if __name__ == '__main__':
                                   credentials=pika.PlainCredentials('user', 'pass')))
     channel = connection.channel()
 
-    exchange_name = 'edits'  # Match this with the exchange used in the producer
+    exchange_name = 'edits'
     queue_name = 'edits_queue'
 
     channel.exchange_declare(exchange=exchange_name, exchange_type='direct')
     channel.queue_declare(queue=queue_name)
 
-    channel.queue_bind(queue_name, exchange_name, routing_key='')
+    channel.queue_bind(queue_name, exchange_name, routing_key='')  # bind queue with exchange used to send messages.
 
     edit_counter = EditCounter()
 

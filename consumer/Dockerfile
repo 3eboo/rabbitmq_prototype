@@ -7,7 +7,7 @@ WORKDIR /app
 # Copy the consumer script to the container
 COPY consumer.py .
 
-# Install any necessary dependencies
+# Install rabbitmq client pika
 RUN pip install pika
 
 # Run the consumer script when the container starts

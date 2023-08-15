@@ -27,4 +27,4 @@ def test_produce_message_with_connection_error(mock_pika):
     with pytest.raises(RuntimeError, match="Error connecting to RabbitMQ:"):
         produce_message('sample_data.csv')
 
-# Additional test cases for edge cases and error handling can be added
+

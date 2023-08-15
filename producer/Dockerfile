@@ -6,9 +6,11 @@ WORKDIR /app
 
 # Copy the producer script to the container
 COPY producer.py .
+
+# Copy sample_data to the container.
 COPY sample_data.csv .
 
-# Install any necessary dependencies
+# Install rabbitmq client pika
 RUN pip install pika
 
 # Run the producer script when the container starts
