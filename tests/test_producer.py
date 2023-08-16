@@ -2,7 +2,7 @@ from unittest.mock import patch
 
 import pika
 import pytest
-from producer import produce_message
+from producer.producer import produce_message
 
 
 @pytest.fixture
@@ -21,8 +21,8 @@ def test_produce_message(mock_pika):
     mock_channel.basic_publish.assert_called()  # Check if basic_publish was called
 
 
-# def test_produce_message_with_connection_error(mock_pika):
-#     mock_pika.BlockingConnection.side_effect = pika.exceptions.AMQPConnectionError("Connection error")
-#
-#     with pytest.raises(RuntimeError, match="Error connecting to RabbitMQ: "):
-#         produce_message('sample_data.csv')
+def test_produce_message_with_connection_error(mock_pika):
+    mock_pika.BlockingConnection.side_effect = pika.exceptions.AMQPConnectionError("Connection error")
+
+    with pytest.raises(RuntimeError, match="Error connecting to RabbitMQ: "):
+        produce_message('sample_data.csv')
