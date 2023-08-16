@@ -23,7 +23,7 @@ class EditCounter:
         german_edits_per_min = calculate_target_per_minute(self.german_wiki_edits, elapsed_time_in_min)
 
         self.data_results.append({
-            'elapsed_time': elapsed_time_in_min,
+            'elapsed_time': round(elapsed_time_in_min, 2),
             'global_edits_per_min': round(global_edits_per_min, 2),
             'german_edits_per_min': round(german_edits_per_min, 2)
         })
