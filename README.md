@@ -24,7 +24,7 @@ you will see the three containers running, rabbitmq instance, producer and consu
 1. **For the sake of prototype the data is stored as an array of documents in file called "results.json" to get the data, use docker cp command and get the file from consumer's container like this:**
 
 ```commandline
-docker cp rabbitmq_prototype_consumer:/app/results.json .
+docker cp rabbitmq_prototype_consumer_1:/app/results.json .
 ```   
 
 2. **A flag is published by producer (b'END') to notify the end of messages and therefore dumping the results**
@@ -33,17 +33,19 @@ docker cp rabbitmq_prototype_consumer:/app/results.json .
 
 ## Questions
 
-1. A timeseries database to store the monitoring data for dashboards or a document based database like redis could be suitable for the usecase.
+1. A timeseries database like influx-db to store the data, ideal to monitor historical changes and construct dashboards, and time-series queries accordingly
 
 **Advantages:**
 
 **Scalable:** can scale horizontally making it suitable for handling large amount of data.
 
-**Performance:** concurrent reads and writes effeciently.
+**Performance:** suitable for concurrent and frequent reads and writes.  
+**flexible:** can add different measurements 
 
 **Cons**
 
 Doesn't conform with typical SQL database properties(ACID). 
+Can be complex in setting and manging your own influxdb cluster. 
 
 
 
