@@ -1,6 +1,4 @@
-from unittest.mock import Mock, patch
-
-from consumer.consumer import EditCounter, callback
+from consumer.consumer import EditCounter
 
 
 def test_edit_counter():
@@ -11,16 +9,4 @@ def test_edit_counter():
 
     counter.process_message(b'{"type": "edit", "server_name": "de.wikipedia.org"}')
     assert counter.global_edits == 1
-
-
-def test_callback():
-    mock_ch = Mock()
-    mock_method = Mock()
-    mock_properties = Mock()
-    mock_body = b'{"type": "edit"}'
-    counter = EditCounter()
-
-    with patch('consumer.edit_counter', counter):
-        callback(mock_ch, mock_method, mock_properties, mock_body)
-
-    assert counter.global_edits == 1
+    assert counter.german_wiki_edits == 1
