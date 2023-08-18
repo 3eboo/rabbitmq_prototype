@@ -1,4 +1,4 @@
-from consumer.consumer import EditCounter
+from consumer import EditCounter
 
 
 def test_edit_counter():
